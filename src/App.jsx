@@ -38,7 +38,9 @@ export default function App() {
       try {
         const current = await getCurrentWeather(coords.lat, coords.lon);
         setWeather(current);
-      } catch {}
+      } catch {
+        // Ignore errors on auto-refresh
+      }
     }, 60_000);
     return () => clearInterval(int);
   }, [coords]);
